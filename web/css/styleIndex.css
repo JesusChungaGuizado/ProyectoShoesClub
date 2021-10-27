@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+.main_index{
+position: relative;
+top: 99.17px;
+}
+.carousel{
+    width: 90%;
+    margin: 5em auto;
+}
+.carousel-banner{
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    
+}
+.carousel__contenedor{
+    position: relative;
+}
+.carousel__lista,.carousel__lista_banner{
+    overflow:hidden;
+}
+
+/* 
+.carousel__elemento{
+margin: 0 auto;
+text-align: center;
+} */
+.cards-product-item {
+    margin: 1rem;
+}
+.carousel__elemento:hover{
+width: 100%;
+}
+.banner-img{
+    width: 100%;
+}
+.carousel__anterior,.carousel__siguiente,.carousel__anterior_banner,.carousel__siguiente_banner{
+    position: absolute;
+    display:block;
+    width:30px;
+    height:30px;
+    border:none;
+    top:calc(50% - 35px);
+    line-height:30px;
+    text-align:center;
+    color: #000;
+    background:none;
+    opacity: 0.2;
+    font-size: 2em;
+    z-index: 4;
+}
+
+.carousel__anterior:hover,.carousel__siguiente:hover,.carousel__anterior_banner:hover,.carousel__siguiente_banner:hover{
+    opacity: 1;
+    transition: 0.5s all;
+    cursor: pointer;
+}
+.carousel__anterior{
+    left: -30px;
+   
+}
+.carousel__siguiente{
+    right: -30px;
+}
+.carousel__anterior_banner{
+    position: absolute;
+    left: 2rem;
+}
+.carousel__siguiente_banner{
+    position: absolute;
+    right: 2rem;
+}
+.recomendaciones{
+    margin-bottom: 1em;
+}
+.carousel__indicadores .glider-dot,.carousel__indicadores_banner .glider-dot{
+    margin-top: 1em ;
+    width: 20px;
+    height: 4px;
+    background:var(--dark-blue);
+    opacity: 0.2;
+}
+.carousel__indicadores .glider-dot:hover,.carousel__indicadores_banner .glider-dot:hover{
+    opacity: 0.5;
+}
+.carousel__indicadores .glider-dot.active,.carousel__indicadores_banner .glider-dot.active{
+    opacity: 1;
+}
