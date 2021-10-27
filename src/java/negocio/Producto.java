@@ -20,8 +20,9 @@ public class Producto {
     private int oferta;
     private int descuento;
     private double precioOferta;
+    private int talla;
 
-    public Producto(String nombre, String descripcion,String marca, double precioNormal, String imagen, int categoria, int oferta, int descuento) {
+    public Producto(String nombre, String descripcion,String marca, double precioNormal, String imagen, int categoria, int oferta, int descuento,int talla) {
         this.nombre = nombre;
         this.marca=marca;
         this.descripcion = descripcion;
@@ -30,6 +31,7 @@ public class Producto {
         this.categoria = categoria;
         this.oferta = oferta;
         this.descuento = descuento;
+        this.talla=talla;
     }
 
     public Producto() {
@@ -114,6 +116,14 @@ public class Producto {
 
     public void setPrecioOferta(double precioOferta) {
         this.precioOferta = precioOferta;
+    }
+
+    public int getTalla() {
+        return talla;
+    }
+
+    public void setTalla(int talla) {
+        this.talla = talla;
     }
     
 }

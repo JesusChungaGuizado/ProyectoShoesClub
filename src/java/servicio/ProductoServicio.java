@@ -14,4 +14,5 @@ import negocio.Producto;
 public interface ProductoServicio {
     public List listarOfertas();
     public Producto buscarProducto(int cod);
+    public List FiltrarProductos(int cat,String sexo);
 }

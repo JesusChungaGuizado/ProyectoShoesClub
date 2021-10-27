@@ -24,5 +24,11 @@ public class ProductoDaoImp implements ProductoDao{
         String sql="{call buscarCalzado("+cod+")}";
        return Operacion.buscar(sql);
     }
+
+    @Override
+    public List FiltrarProducto(int cat, String sexo) {
+        String sql="{call FiltrarCalzado("+cat+",'"+sexo+"')}";
+        return Operacion.listar(sql);
+    }
     
 }

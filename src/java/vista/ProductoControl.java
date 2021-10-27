@@ -55,6 +55,13 @@ public class ProductoControl extends HttpServlet {
              request.getSession().setAttribute("detalle",pro);
              response.sendRedirect("DetalleProducto.jsp");
         }
+          if (acc.equalsIgnoreCase("filter")) {
+             String sexo=request.getParameter("sexo");
+             int categoria=Integer.parseInt(request.getParameter("cat"));
+             proSer.FiltrarProductos(categoria, sexo);
+             request.getSession().setAttribute("producto",proSer.FiltrarProductos(categoria, sexo));
+             response.sendRedirect("producto.jsp");
+        }
         
         
         

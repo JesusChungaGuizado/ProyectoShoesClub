@@ -34,24 +34,27 @@
                </div>
                
                 <div>
-                    <span class="desc">S/ <%= String.format(Locale.ROOT,"%.2f", pro.getPrecioNormal())%></span>
+                    <% if (pro.getOferta()!=0) {%>
+                               <span class="desc">S/ <%= String.format(Locale.ROOT,"%.2f", pro.getPrecioNormal())%></span>
+                    <% }%>  
+                   
                     <div class="precio">
                         <h3 >S/ <%= String.format(Locale.ROOT,"%.2f",pro.getPrecioOferta() )%> </h3>
-                        <span>-<%=pro.getDescuento() %>%</span>
+                        <% if (pro.getOferta()!=0) {%>
+                               <span>-<%=pro.getDescuento() %>%</span>
+                        <% }%> 
                     </div>
                 </div>
                  <div class="descripcion">
                     <h5>Descripción</h5>
                     <p ><%=pro.getDescripcion()%></p>
                 </div>
-                <h4>Tallas</h4>
+                <h4>Talla</h4>
                 <section class="tallas">
-                    <div class="item">40</div>
-                    <div class="item">42</div>
-                    <div class="item">43</div>
-                    <div class="item">44</div>
+                    <div class="item"><%=pro.getTalla() %></div>
+                    
                 </section>
-                <span class="btn-boton">AGREGAR A CARRITO</span>
+                <a class="btn-boton" href="PedidoControl?acc=Agregar&id=<%= pro.getIdProducto() %>">AGREGAR A CARRITO</a>
             </div>
         </section>
         <section class=" info">

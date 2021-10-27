@@ -14,4 +14,5 @@ import java.util.List;
 public interface ProductoDao {
     public List listarOfertas();
    public Object[]buscarProducto(int cod);
+   public List FiltrarProducto(int cat,String sexo);
 }

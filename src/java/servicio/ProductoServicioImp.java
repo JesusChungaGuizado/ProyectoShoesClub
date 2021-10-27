@@ -41,9 +41,15 @@ public class ProductoServicioImp implements ProductoServicio{
             p.setOferta((int)pro[7]);
             p.setDescuento((int)pro[8]);
             p.setPrecioOferta((double)pro[9]);
+            p.setTalla((int)pro[11]);
             return p;
         }
         return null;
+    }
+
+    @Override
+    public List FiltrarProductos(int cat, String sexo) {
+        return proDao.FiltrarProducto(cat, sexo);
     }
     
 }

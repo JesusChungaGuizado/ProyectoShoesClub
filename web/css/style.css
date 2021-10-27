@@ -262,6 +262,7 @@ nav ul {
     font-size: 1.2rem;
     cursor: pointer;
     margin: 0 auto;
+    text-decoration: none;
 }
 /* -----------Info Delivery-------- */
 .info {
@@ -501,10 +502,14 @@ footer .link {
     top: 0;
     z-index: 2;
     transition: ease-in 0.2s clip-path;
-    cursor: pointer;
+
 }
 .cat-item-chield li {
     padding: 1rem;
+}
+.cat-item-chield li a{
+    text-decoration:none;
+    color:var( --dark-color);
 }
 
 /* -----CARDS PRODUCTOS----- */
