@@ -21,8 +21,9 @@ public class Producto {
     private int descuento;
     private double precioOferta;
     private int talla;
+    private int stock;
 
-    public Producto(String nombre, String descripcion,String marca, double precioNormal, String imagen, int categoria, int oferta, int descuento,int talla) {
+    public Producto(String nombre, String descripcion,String marca, double precioNormal, String imagen, int categoria, int oferta, int descuento,int talla,int stock) {
         this.nombre = nombre;
         this.marca=marca;
         this.descripcion = descripcion;
@@ -32,6 +33,7 @@ public class Producto {
         this.oferta = oferta;
         this.descuento = descuento;
         this.talla=talla;
+        this.stock=stock;
     }
 
     public Producto() {
@@ -125,5 +127,14 @@ public class Producto {
     public void setTalla(int talla) {
         this.talla = talla;
     }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+    
     
 }

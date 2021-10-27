@@ -4,6 +4,8 @@
     Author     : Jesus
 --%>
 
+<%@page import="java.util.Locale"%>
+<%@page import="vista.PedidoPresentador"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,6 +20,10 @@
       />
     </head>
     <body class="fondo-body">
+        <% PedidoPresentador pedPre = (PedidoPresentador) session.getAttribute("pedPre"); %>
+        <%! String total="0";  %>
+        <%! String subTotal="0";  %>
+        <%! String descTotal="0";  %>
           <jsp:include page="menuPrincipal.jsp" />
        <section class="carrito_header">
         <h1>Carrito de Compras</h1>
@@ -27,6 +33,7 @@
       <main class="container-carrito">
             <section class=" container carrito_body">
                 <section class="carrito-list">
+                     <%if (pedPre.getLis().size() != 0) {%>
                     <table>
                         <thead>
                             <tr>
@@ -38,82 +45,44 @@
                             </tr>
                         </thead>
                         <tbody>
+                             <%for (int i = 0; i < pedPre.getLis().size(); i++) {
+                                Object[] car = (Object[]) pedPre.getLis().get(i);
+                                subTotal=car[6].toString();
+                                descTotal=car[7].toString();
+                                total=car[8].toString();
+                        %>  
                             <tr class="carrito-list-item">
                                 <td>
                                     <div class="imagen">
-                                        <img src="img/1UCC0020026_1.jpg" alt="">
-                                        <span class="nombre">Zapato Casual Rat</span>
+                                        <img src="<%= car[1] %>" alt="">
+                                        <span class="nombre"><%= car[0] %></span>
                                         <span class="codigo">SKU:1UCK0020020</span>
                                     </div>
                                 </td>
-                                <td>S/ 197.40</td>
+                                <td>S/ <%= car[2]%></td>
                                 <td >
-                                    <div class="cantidad">
-                                        <button class="boton">-</button>
-                                        <p>1</p>
-                                        <button class="boton">+</button>
+                                    <div >
+                                        <form class="cantidad" action="PedidoControl" method="POST">
+                                            <input type="hidden" name="id" value="<%= car[9] %>" />
+                                            <button name="acc" value="Restar"  type="submit" class="boton">-</button>
+                                            <p><%= car[4] %></p>
+                                            <button name="acc" value="Agregar" type="submit"  class="boton">+</button>
+                                        </form>
                                     </div>
                                 </td>
-                                <td>S/ 197.40</td>
-                                <td><a class="link-delete" href=""><i class='bx bxs-trash'></i> Eliminar</a></td>
+                                <td>S/<%= String.format(Locale.ROOT,"%.2f", (double)car[5] )%> </td>
+                                
+                                <td><a class="link-delete" href="PedidoControl?cod=<%= car[9] %>&acc=Quitar"><i class='bx bxs-trash'></i> Eliminar</a></td>
                             </tr>
-                            <tr class="carrito-list-item">
-                                <td>
-                                    <div class="imagen">
-                                        <img src="img/1UCC0020026_1.jpg" alt="">
-                                        <span class="nombre">Zapato Casual Rat</span>
-                                        <span class="codigo">SKU:1UCK0020020</span>
-                                    </div>
-                                </td>
-                                <td>S/ 197.40</td>
-                                <td >
-                                    <div class="cantidad">
-                                        <button class="boton">-</button>
-                                        <p>1</p>
-                                        <button class="boton">+</button>
-                                    </div>
-                                </td>
-                                <td>S/ 197.40</td>
-                                <td><a class="link-delete" href=""><i class='bx bxs-trash'></i> Eliminar</a></td>
-                            </tr>
-                            <tr class="carrito-list-item">
-                                <td>
-                                    <div class="imagen">
-                                        <img src="img/1UCC0020026_1.jpg" alt="">
-                                        <span class="nombre">Zapato Casual Rat</span>
-                                        <span class="codigo">SKU:1UCK0020020</span>
-                                    </div>
-                                </td>
-                                <td>S/ 197.40</td>
-                                <td >
-                                    <div class="cantidad">
-                                        <button class="boton">-</button>
-                                        <p>1</p>
-                                        <button class="boton">+</button>
-                                    </div>
-                                </td>
-                                <td>S/ 197.40</td>
-                                <td><a class="link-delete" href=""><i class='bx bxs-trash'></i> Eliminar</a></td>
-                            </tr>
-                            <tr class="carrito-list-item">
-                                <td>
-                                    <div class="imagen">
-                                        <img src="img/1UCC0020026_1.jpg" alt="">
-                                        <span class="nombre">Zapato Casual Rat</span>
-                                        <span class="codigo">SKU:1UCK0020020</span>
-                                    </div>
-                                </td>
-                                <td>S/ 197.40</td>
-                                <td >
-                                    <div class="cantidad">
-                                        <button class="boton">-</button>
-                                        <p>1</p>
-                                        <button class="boton">+</button>
-                                    </div>
-                                </td>
-                                <td>S/ 197.40</td>
-                                <td><a class="link-delete" href=""><i class='bx bxs-trash'></i> Eliminar</a></td>
-                            </tr>
+                             <%       }
+                              } else { total="0" ;%>
+                    <h6>Carrito Vacio....</h6>
+                    
+                    <% }
+                    %>  
+
+ 
+                            
                             
                         </tbody>
     
@@ -123,11 +92,13 @@
                     <h2>Resumen de Compra</h2>
                         <div class="total">
                             <span>Subtotal</span>
-                            <span>S/987.00</span>
+                            <span>S/<%= subTotal %></span><br>
+                            <span>Descuento</span><br>
+                            <span>S/<%= descTotal%></span>
                         </div>
                         <div class="total">
                             <span>Total</span>
-                            <span>S/987.00</span>
+                            <span>S/<%= total %></span>
                         </div>
                     <span class="btn-boton">Generar Compra</span>
                 </section>

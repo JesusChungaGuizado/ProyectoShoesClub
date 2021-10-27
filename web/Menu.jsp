@@ -10,6 +10,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        
+        
     </head>
     <body>
         <% Object[]fil=(Object[])session.getAttribute("SesionCliente"); %>
@@ -21,8 +23,14 @@
         <%= fil[5] %>
         <%= fil[6] %>
         <%= fil[7] %>
-        <div class="contendor-paginas">
+        <div id="paginas">
             
         </div>
+        <a href="#" id="footer">Link footer</a>
+        <a href="#" id="carrito">Link</a>
+      
+       
+           <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+           <script src="js/Producto.js"></script>
     </body>
 </html>

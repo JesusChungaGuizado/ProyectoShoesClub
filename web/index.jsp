@@ -12,6 +12,12 @@
         <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet"/>
     </head>
     <body>
+         <%
+             HttpSession se=request.getSession();
+            if (se.getAttribute("pedPre")==null) {
+                    response.sendRedirect("PedidoControl?acc=Nuevo");
+                }
+        %>
         <!--  Menu de Navegacion--->
         <jsp:include page="menuPrincipal.jsp" />
         <main class="main_index">

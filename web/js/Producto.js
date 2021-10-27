@@ -1,7 +1,14 @@
 $(document).ready(function () {
 cargarOfertas();
+ $("#carrito").click(function (){
+                    $("#paginas").load("carrito.jsp");
+                });
+                 $("#footer").click(function (){
+                    $("#paginas").load("footer.jsp");
+                });
 
 });
+
 function cargarOfertas(){
      $.ajax({
         type: 'GET',
