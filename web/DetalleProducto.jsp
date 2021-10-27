@@ -4,6 +4,7 @@
     Author     : Jesus
 --%>
 
+<%@page import="java.util.Locale"%>
 <%@page import="negocio.Producto"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -31,7 +32,18 @@
                 <p><%=pro.getNombre()%></p>
                 <span>SKU:1UCK0020020</span>
                </div>
-                <h3>S/ <%=pro.getPrecioOferta() %></h3>
+               
+                <div>
+                    <span class="desc">S/ <%= String.format(Locale.ROOT,"%.2f", pro.getPrecioNormal())%></span>
+                    <div class="precio">
+                        <h3 >S/ <%= String.format(Locale.ROOT,"%.2f",pro.getPrecioOferta() )%> </h3>
+                        <span>-<%=pro.getDescuento() %>%</span>
+                    </div>
+                </div>
+                 <div class="descripcion">
+                    <h5>Descripción</h5>
+                    <p ><%=pro.getDescripcion()%></p>
+                </div>
                 <h4>Tallas</h4>
                 <section class="tallas">
                     <div class="item">40</div>

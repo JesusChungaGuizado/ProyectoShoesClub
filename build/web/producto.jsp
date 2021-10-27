@@ -3,8 +3,7 @@
     Created on : 24-oct-2021, 19:09:06
     Author     : Jesus
 --%>
-
-<%@page import="java.text.DecimalFormat"%>
+<%@page import="java.util.Locale"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -80,11 +79,9 @@
                                <h4><%= lista[1] %></h4>
                               </div>
                               <div>
-                                   <p>S/<%= (double)lista[4] %></p>
-                                    <h3>S/<%= (double)lista[9] %></h3>
-                                  
+                                   <p>S/<%= String.format(Locale.ROOT,"%.2f", (double)lista[4] )%></p>
+                                    <h3>S/<%= String.format(Locale.ROOT,"%.2f", (double)lista[9] )%></h3>
                               </div>
-                       
                       </div>
                     </a>
                 </div>
