@@ -253,15 +253,15 @@ nav ul {
     font-size: 1.3rem;
 }
 .btn-boton {
-    width: 90%;
+    width: 50%;
     display: inline-block;
     text-align: center;
     background-color: var(--dark-blue);
     color: var(--white-color);
     padding: 1rem 4rem;
-    font-size: 1.2rem;
+    font-size: 1rem;
     cursor: pointer;
-    margin: 0 auto;
+    
     text-decoration: none;
 }
 /* -----------Info Delivery-------- */
@@ -405,11 +405,12 @@ tr td {
     flex-direction: column;
     justify-content: space-between;
     gap: 3rem;
-    max-height: 400px;
+    max-height: 500px;
 }
 .carrito-resumen h2 {
     text-align: center;
-    font-weight: var(--font-light-bold);
+ 
+    font-weight: var(  --font-semi-bold);
 }
 .carrito-resumen h2::after {
     content: "";
@@ -423,9 +424,16 @@ tr td {
     display: flex;
     justify-content: space-between;
 }
+.carrito-resumen .total span:nth-child(1){
+       font-weight: var(--font-semi-bold);
+   
+}
+
+    
 .carrito-resumen .btn-boton {
+    width: 100%;
     font-size: 1rem;
-    border-radius: 5px;
+    
 }
 /* }-----------Footer------------- */
 footer {

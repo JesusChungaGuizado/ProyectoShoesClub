@@ -54,7 +54,7 @@
                     <div class="item"><%=pro.getTalla() %></div>
                     
                 </section>
-                <a class="btn-boton" href="PedidoControl?acc=Agregar&id=<%= pro.getIdProducto() %>">AGREGAR A CARRITO</a>
+                <a class="btn-boton" href="PedidoControl?acc=Agregar&id=<%= pro.getIdProducto() %>"><i class='bx bxs-cart-add' ></i> AGREGAR A CARRITO</a>
             </div>
         </section>
         <section class=" info">

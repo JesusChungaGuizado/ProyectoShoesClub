@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import negocio.*;
 import persistencia.PedidoDao;
 import persistencia.PedidoDaoImp;
@@ -65,7 +66,9 @@ public class PedidoServicioImp implements PedidoServicio{
         return codGenerado[0].toString();
        
     }
-   
+   private String formatoNumero(double n){
+     return String.format(Locale.ROOT,"%.2f",n);
+   }
     private List verCesta(){
         List lis=new ArrayList();
         for (int i = 0; i < ped.getCes().size(); i++) {
@@ -74,13 +77,13 @@ public class PedidoServicioImp implements PedidoServicio{
             //fil[0]=lin.getPro().getId();
             fil[0]=lin.getPro().getNombre();
             fil[1]=lin.getPro().getImagen();
-            fil[2]=lin.getPro().getPrecioOferta();
-            fil[3]=lin.getPro().getPrecioNormal();
+            fil[2]=formatoNumero(lin.getPro().getPrecioOferta());
+            fil[3]=formatoNumero(lin.getPro().getPrecioNormal());
             fil[4]=lin.getCan();
-            fil[5]=lin.getImp();
-            fil[6]=ped.getSubtotal();
-            fil[7]=ped.getTotDesc();
-            fil[8]=ped.getTot();
+            fil[5]=formatoNumero(lin.getImp());
+            fil[6]=formatoNumero(ped.getSubtotal());
+            fil[7]=formatoNumero(ped.getTotDesc());
+            fil[8]=formatoNumero(ped.getTot());
             fil[9]=lin.getPro().getIdProducto();
             fil[10]=lin.getPro().getOferta();
             lis.add(fil);
