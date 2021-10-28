@@ -43,14 +43,15 @@ public class prueba {
 //                }else{
 //                    System.out.println("usuario no encontrado");
 //                }
-String busqueda =cs.BuscarCliente("Jesus");
-if ( busqueda !=null) {
-             System.out.println("si existe");
-        }else{
-      System.out.println("No exites");
-}
+//String busqueda =cs.BuscarCliente("Jesus");
+//if ( busqueda !=null) {
+//             System.out.println("si existe");
+//        }else{
+//      System.out.println("No exites");
+//}
        
-       
+        PedidoServicioImp p=new PedidoServicioImp();
+//        System.out.println(   p.generarCodigo());
     }
     
 }

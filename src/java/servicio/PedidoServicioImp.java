@@ -60,10 +60,17 @@ public class PedidoServicioImp implements PedidoServicio{
     }
     private String generarCodigo(){
         Object[] cod= pdao.ObtenerUltimoPedido();
-        String text=cod[0].toString();
-        String numbers = text.length() <= 5 ? text : text.substring(text.length() - 5);
-        Object[]codGenerado=pdao.GenerarCodigoPedido(Integer.parseInt(numbers));
-        return codGenerado[0].toString();
+       
+        if (cod[0]!=null) {
+            String text=cod[0].toString();
+            String numbers = text.length() <= 6 ? text : text.substring(text.length() - 6);
+            Object[]codGenerado=pdao.GenerarCodigoPedido(Integer.parseInt(numbers));
+             return codGenerado[0].toString();
+        }else{
+            Object[] codInicial=pdao.GenerarCodigoPedido(0);
+          return codInicial[0].toString();
+        }
+       
        
     }
    private String formatoNumero(double n){

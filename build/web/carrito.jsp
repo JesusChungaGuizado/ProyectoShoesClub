@@ -105,7 +105,12 @@
                         <span>Total</span>
                         <span>S/<%= total %></span>
                     </div>
-                    <span class="btn-boton">Generar Compra</span>
+                    <%if (pedPre.getLis().size() != 0) {%>
+                       <a href="PedidoControl?acc=Comprar" class="btn-boton ">Generar Compra</a>
+                    <%}else{%>
+                        <a href="" class="btn-boton desabiltar">Generar Compra</a>
+                    <%}%>
+                    
                 </section>
             </section>
             <!-- Footer -->

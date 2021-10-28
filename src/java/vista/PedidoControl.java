@@ -98,9 +98,25 @@ public class PedidoControl extends HttpServlet {
 //             response.sendRedirect("PedidoGui.jsp");
 //        }
         if (acc.equalsIgnoreCase("Comprar")) {
-            String cod=request.getParameter("cod");
-            pedPre.setMsg(pedSer.grabarPedido(Integer.parseInt(cod)));
-            response.sendRedirect("carrito.jsp");
+            HttpSession se=request.getSession();
+            Object[]fil=(Object[])se.getAttribute("SesionCliente");
+            if (fil!=null) {
+                int idCliente=(int)fil[0];
+                String msg=pedSer.grabarPedido(idCliente);
+                pedPre=new PedidoPresentador();
+                pedSer=new PedidoServicioImp();
+                pedSer.NuevoPedido();
+                request.getSession().setAttribute("pedPre", pedPre);
+                pedPre.setLis(pedSer.quitarArticulo(""));
+                response.sendRedirect(("carrito.jsp"));
+            }else{
+               response.sendRedirect("login.jsp");
+            }
+       
+//            se.removeAttribute("SesionCliente");
+//            String cod=request.getParameter("cod");
+//            pedPre.setMsg(pedSer.grabarPedido(Integer.parseInt(cod)));
+//            response.sendRedirect("carrito.jsp");
         }
     }
 

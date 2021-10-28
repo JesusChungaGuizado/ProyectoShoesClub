@@ -432,8 +432,11 @@ tr td {
     
 .carrito-resumen .btn-boton {
     width: 100%;
-    font-size: 1rem;
-    
+    font-size: 1rem; 
+}
+.desabiltar{
+    pointer-events: none; 
+            cursor: default; 
 }
 /* }-----------Footer------------- */
 footer {

@@ -75,17 +75,19 @@ public class Operacion {
         }
         return fila;
     }
-    public static int totalCategoria(String sql){
-        int total=0; 
-        List lista= listar(sql);
-        total=lista.size();
-        return total;
-    }
+//    public static int totalCategoria(String sql){
+//        int total=0; 
+//        List lista= listar(sql);
+//        total=lista.size();
+//        return total;
+//    }
     public static Object[] ObtenerUltimoPedido(String sql){
         List lista= listar(sql);
         Object[] codPedido = null;
          if (lista != null) {
-          codPedido = (Object[])lista.get(0);
+             if (lista.size() > 0) {
+                codPedido = (Object[]) lista.get(0);
+            }
             
         }
         return codPedido;
