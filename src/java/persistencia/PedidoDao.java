@@ -19,4 +19,6 @@ public interface PedidoDao {
        public Producto buscar(int cod) ;
        public Object[] ObtenerUltimoPedido();
        public Object[] GenerarCodigoPedido(int Item);
+       public List VerMiPedido(int id);
+       public List verDetallePedido(String codPedido);
 }

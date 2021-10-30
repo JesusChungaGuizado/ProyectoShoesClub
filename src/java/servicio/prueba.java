@@ -6,6 +6,8 @@
 package servicio;
 
 import java.sql.Connection;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import negocio.Cliente;
 import persistencia.Conexion;
 
@@ -52,6 +54,8 @@ public class prueba {
        
         PedidoServicioImp p=new PedidoServicioImp();
 //        System.out.println(   p.generarCodigo());
+ SimpleDateFormat sdf=new SimpleDateFormat("dd-MMM-y hh:mm:ss a ");
+        System.out.println( sdf.format(new Date()));
     }
     
 }

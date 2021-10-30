@@ -5,6 +5,7 @@
  */
 package servicio;
 
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -118,6 +119,27 @@ public class PedidoServicioImp implements PedidoServicio{
         }
      
         return msg;
+    }
+
+    @Override
+    public void GenerarBoletaPedido(OutputStream out,int cod) {
+       PedidoBoleta p=new PedidoBoleta();
+        try {
+            p.setEncabezado("COMPROBANTE DE PEDIDO");
+            String[]nombre=new String[]{"Cantidad","Descripción","Precio Unitario","Descuento(%)","Subtotal(S/)"};
+            p.setThead(nombre);
+            List pedido=pdao.VerMiPedido(cod);
+            Object[] pd=(Object[])pedido.get(0);
+            //p.setlistaDatosPedido(pedido);
+            p.setCodPedido(pd[0].toString());
+            p.setFecha(pd[1].toString());
+            p.setTotal((double)pd[2]);
+            p.setListaPed(pdao.verDetallePedido(pd[0].toString()));
+            
+            p.generaBoleta(out);
+        } catch (Exception e) {
+        }
+     
     }
 
    

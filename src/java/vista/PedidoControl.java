@@ -6,6 +6,7 @@
 package vista;
 
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import negocio.PedidoBoleta;
 import servicio.PedidoServicio;
 import servicio.PedidoServicioImp;
 import servicio.ProductoServicio;
@@ -111,12 +113,26 @@ public class PedidoControl extends HttpServlet {
                 response.sendRedirect(("carrito.jsp"));
             }else{
                response.sendRedirect("login.jsp");
+               
             }
        
 //            se.removeAttribute("SesionCliente");
 //            String cod=request.getParameter("cod");
 //            pedPre.setMsg(pedSer.grabarPedido(Integer.parseInt(cod)));
 //            response.sendRedirect("carrito.jsp");
+        }
+        if (acc.equalsIgnoreCase("reporte")) {
+            response.setContentType("application/PDF");
+            response.setHeader("Content-Disposition", "attachment; filename=\"pedidoBoleta.PDF\";");
+            response.setHeader("Cache-Control", "no-cache");
+            response.setHeader("Pragma", "no-cache");
+            response.setDateHeader("Expires", 0);
+            try {
+                pedSer=new PedidoServicioImp();
+                OutputStream out =response.getOutputStream();
+                pedSer.GenerarBoletaPedido(out, 3);
+            } catch (Exception e) {
+            }
         }
     }
 

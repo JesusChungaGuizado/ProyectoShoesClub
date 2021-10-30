@@ -109,6 +109,7 @@
                        <a href="PedidoControl?acc=Comprar" class="btn-boton ">Generar Compra</a>
                     <%}else{%>
                         <a href="" class="btn-boton desabiltar">Generar Compra</a>
+                        <a href="PedidoControl?acc=reporte" class="btn-boton ">Reporte</a>
                     <%}%>
                     
                 </section>

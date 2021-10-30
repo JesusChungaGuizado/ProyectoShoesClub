@@ -24,7 +24,7 @@ public class PedidoDaoImp implements PedidoDao{
 
     @Override
     public String grabarDetallePedido(Pedido p, LineaPedido lp) {
-        String sql="{call grabarDetallePedido('"+p.getNum()+"',"+lp.getPro().getIdProducto()+","+lp.getCan()+")}";
+        String sql="{call grabarDetallePedido('"+p.getNum()+"',"+lp.getPro().getIdProducto()+","+lp.getCan()+","+lp.getImp()+")}";
         return Operacion.ejecutar(sql);
     }
 
@@ -68,6 +68,18 @@ public class PedidoDaoImp implements PedidoDao{
     public Object[] GenerarCodigoPedido(int Item) {
         String sql="{call GenerarCodigo("+Item+")}";
         return Operacion.buscar(sql);
+    }
+
+    @Override
+    public List VerMiPedido(int idCliente) {
+        String sql="{call VerPedido("+idCliente+")}";
+        return Operacion.listar(sql);
+    }
+
+    @Override
+    public List verDetallePedido(String codPedido) {
+        String sql="{call VerDetallePedido('"+codPedido+"')}";
+        return Operacion.listar(sql);
     }
     
 

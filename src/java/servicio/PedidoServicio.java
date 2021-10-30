@@ -5,6 +5,7 @@
  */
 package servicio;
 
+import java.io.OutputStream;
 import java.util.List;
 import negocio.Producto;
 
@@ -21,5 +22,6 @@ public interface PedidoServicio {
     //public Object[] buscarCliente(int cod);
     public String grabarPedido(int cod);
     public void NuevoPedido();
+    public void GenerarBoletaPedido(OutputStream out,int codCli);
      
 }
