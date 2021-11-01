@@ -14,6 +14,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Mi carrito</title>
         <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css" integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   
         <link
         href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
         rel="stylesheet"
@@ -106,10 +109,11 @@
                         <span>S/<%= total %></span>
                     </div>
                     <%if (pedPre.getLis().size() != 0) {%>
-                       <a href="PedidoControl?acc=Comprar" class="btn-boton ">Generar Compra</a>
+                       <a href="#" id="compra" class="btn-boton ">Generar Compra</a>
+                         <!-- <a href="PedidoControl?acc=reporte" class="btn-boton ">Reporte</a>---->
                     <%}else{%>
                         <a href="" class="btn-boton desabiltar">Generar Compra</a>
-                        <a href="PedidoControl?acc=reporte" class="btn-boton ">Reporte</a>
+                          <!-- <a href="PedidoControl?acc=reporte" class="btn-boton ">Reporte</a>--->
                     <%}%>
                     
                 </section>
@@ -117,6 +121,9 @@
             <!-- Footer -->
           <jsp:include page="footer.jsp" />
       </main>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="js/Pedido.js"></script>
       <script src="js/efectos.js"></script>
     </body>
 </html>

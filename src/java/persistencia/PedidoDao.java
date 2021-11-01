@@ -21,4 +21,5 @@ public interface PedidoDao {
        public Object[] GenerarCodigoPedido(int Item);
        public List VerMiPedido(int id);
        public List verDetallePedido(String codPedido);
+       public Object[]verDatosPedido(String codPedido);
 }

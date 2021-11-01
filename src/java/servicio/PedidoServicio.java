@@ -22,6 +22,6 @@ public interface PedidoServicio {
     //public Object[] buscarCliente(int cod);
     public String grabarPedido(int cod);
     public void NuevoPedido();
-    public void GenerarBoletaPedido(OutputStream out,int codCli);
-     
+    public void GenerarBoletaPedido(OutputStream out,String codPedido);
+    public  List VerMisPedidos(int codCli);
 }

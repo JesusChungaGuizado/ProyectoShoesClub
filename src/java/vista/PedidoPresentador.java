@@ -16,10 +16,12 @@ public class PedidoPresentador {
     private String msg="";
     private Object[]fil={"","","","","","","","","","",""};
     private Object[]fil2={"",""};
+    private Object[]fil3={"","","","","","","","","","",""};
     private List lis=new ArrayList();
-
+    private List lis2=new ArrayList();
     public PedidoPresentador() {
         lis.add(fil);
+        lis2.add(fil3);
     }
 
     public Object[] getFil() {
@@ -52,6 +54,14 @@ public class PedidoPresentador {
 
     public void setMsg(String msg) {
         this.msg = msg;
+    }
+
+    public List getLis2() {
+        return lis2;
+    }
+
+    public void setLis2(List lis2) {
+        this.lis2 = lis2;
     }
     
 }

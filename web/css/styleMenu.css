@@ -1,0 +1,154 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 30-oct-2021, 18:28:20
+    Author     : Jesus
+*/
+body{
+   
+}
+form.sign-up-form {
+  opacity:1;
+
+}
+form{
+    padding: 0;
+}
+main{
+    position: relative;
+    top: 99.5px;
+}
+main .container{
+    display: grid;
+    grid-template-columns: 300px auto;
+   grid-template-rows:500px;
+}
+.fomulario{
+    padding:4rem 0;
+   
+}
+.nav-usuario{
+    background: var(--dark-color-lightenn);
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+   padding:4rem 1rem;
+    width: 100%;
+    gap:2rem;
+}
+.nav-usuario__nameUser {
+  text-align: center;
+    
+}
+.nav-usuario__operacion{
+    display: flex;
+    flex-direction: column;
+    gap:0.5rem;
+}
+.nav-usuario img{
+    width: 100px;
+}
+.link{
+    
+}
+.conteiner-grid{
+      grid-template-columns: 1fr 1fr;
+    gap:2rem;
+}
+
+.carrito-list-item td{
+    padding: 0.5rem 0.5rem !important;
+  
+}
+footer {
+    position: relative;
+    top: 0;
+}
+
+@media (max-width: 940px) {
+    main .container{
+        
+        grid-template-columns: 200px auto;
+        
+    }
+}
+
+@media (max-width: 870px) {
+   .fomulario{
+    padding:4rem 1rem;
+   
+}
+.sign-up-form {
+   
+    top: 0;
+}
+main .container{
+        
+        grid-template-columns: 150px auto;
+        
+    }
+}
+@media (max-width: 808px) {
+   
+main .container{
+        
+        grid-template-columns: 1fr;
+        grid-template-rows:0.5fr 1fr;
+        
+    }
+    .nav-usuario{
+          padding:1rem 1rem;
+    }
+}
+
+
+
+@media (max-width: 658px) {
+   main .container{
+         grid-template-rows:250px 1fr;
+        
+    }
+.conteiner-grid {
+    grid-template-columns: 1fr ;
+    gap: 2rem;
+    
+   
+}
+
+ .fomulario{
+    padding:2rem 0rem;
+   
+}
+}
+@media (max-width: 650px) {
+   
+main{
+   
+    top:87px;
+}
+
+}
+@media (max-width: 510px) {
+   
+.fomulario {
+  
+   overflow-x: scroll;
+} 
+.carrito-list{
+    padding: 2rem 1rem;
+}
+}
+
+@media (max-width: 324px) {
+   .login-box .user-box {
+
+  width: 250px;
+
+}
+.btn {
+    width: 250px;}
+}
+

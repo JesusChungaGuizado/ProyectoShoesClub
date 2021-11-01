@@ -24,7 +24,8 @@
                      %>
                     <li class="list perfil-usuario "><a class="links login" href="#"><i class='bx bx-user-circle bx-tada bx-flip-horizontal' ></i> <%=fil[5]%> </a>
                         <div >
-                            <a class="link " href="#">Ver Perfil</a>
+                            <a class="link " href="Menu.jsp">Ver Perfil</a>
+                             <a class="link " href="PedidoControl?acc=verPedidos&id=<%= fil[0] %>">Mis Pedidos</a>
                             <a class="link "  href="ClienteControl?acc=LogOut"><i class='bx bx-log-out'></i> Log Out</a>
                         </div> 
                     </li>

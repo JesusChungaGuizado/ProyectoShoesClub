@@ -15,4 +15,5 @@ public interface ClienteDao {
     public Cliente validarAcceso(String usuario,String pass);
     public String registrarCliente(Cliente cli);
     public Cliente buscarCliente(String usuario);
+    public String ActualizarCliente(Cliente cli);
 }

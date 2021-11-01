@@ -55,5 +55,14 @@ public class ClienteServicioImp implements ClienteServicio{
         }
         return null;
     }
+
+    @Override
+    public String ActualizarCliente(Cliente cli) {
+        String msg=cliDao.ActualizarCliente(cli);
+        if (msg==null) {
+            msg="Datos Actualizados";
+        }
+        return msg;
+    }
    
 }

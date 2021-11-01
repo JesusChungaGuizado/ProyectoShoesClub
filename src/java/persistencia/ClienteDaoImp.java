@@ -56,5 +56,11 @@ public class ClienteDaoImp implements ClienteDao{
          }
          return null;
     }
+
+    @Override
+    public String ActualizarCliente(Cliente cli) {
+       String sql="{call ActualizarCliente("+cli.getIdUsuario()+",'"+cli.getNombre()+"','"+cli.getEmail()+"','"+cli.getCelular()+"','"+cli.getDireccion()+"','"+cli.getUsuario()+"','"+cli.getPassword()+"')}";
+       return Operacion.ejecutar(sql);
+    }
     
 }

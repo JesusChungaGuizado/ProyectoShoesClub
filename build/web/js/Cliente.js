@@ -3,6 +3,7 @@ $(document).ready(function () {
    
 ValidarSesion();
 RegistrarCliente();
+UpdateCliente();
 });
   
 
@@ -51,7 +52,7 @@ function RegistrarCliente(){
                 if (resultado=="Registro Exitoso"){
                     $("#registro").trigger('reset');;
                      Swal.fire(
-                        'Succesfull!',
+                        'Successful!',
                          resultado,
                         'success'
                       ).then((result) => {
@@ -66,6 +67,32 @@ function RegistrarCliente(){
                         text: resultado+"!",
                         
                       })
+                }
+                console.log(resultado);
+            }
+        });
+    });
+}
+function UpdateCliente(){
+     var btnUpdate=document.getElementById("btn-update");
+    $("#form-update").submit(function(e){
+        e.preventDefault();
+        $.ajax({
+            url: "ClienteControl?acc=Update",
+            type: 'POST',
+            data: $("#form-update").serialize(), 
+            success: function (resultado) {
+                if (resultado=="Datos Actualizados"){
+                    $("#form-update").trigger('reset');;
+                     Swal.fire(
+                        'Successful!',
+                         resultado,
+                        'success'
+                      ).then((result) => {
+                        if (result.isConfirmed) {
+                            parent.location.href = "Menu.jsp";
+                        }
+                        });
                 }
                 console.log(resultado);
             }

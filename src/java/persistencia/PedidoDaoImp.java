@@ -81,6 +81,12 @@ public class PedidoDaoImp implements PedidoDao{
         String sql="{call VerDetallePedido('"+codPedido+"')}";
         return Operacion.listar(sql);
     }
+
+    @Override
+    public Object[] verDatosPedido(String codPedido) {
+        String sql="{call VerDatosPedido('"+codPedido+"')}";
+        return Operacion.buscar(sql);
+    }
     
 
    

@@ -69,7 +69,25 @@ public class ClienteControl extends HttpServlet {
                 Cliente cli=new Cliente(nombre, email, celular, direc, user, pass);
                 out.println(new Gson().toJson(cliSer.RegistrarCliente(cli)));
             }
+        }
+        if (acc.equalsIgnoreCase("Update")) {
+            response.setContentType("application/json;charset=UTF-8");
+            int id=Integer.parseInt(request.getParameter("id"));
+            String nombre=request.getParameter("nombre");
+            String email=request.getParameter("email");
+            String celular=request.getParameter("celular");
+            String direc=request.getParameter("direccion");
+            String user=request.getParameter("usuario");
+            String pass=request.getParameter("pass");
+            //String busqueda =cliSer.BuscarCliente(user);//Validamos si existe el usuario
            
+            Cliente cli=new Cliente(nombre, email, celular, direc, user, pass);
+            cli.setIdUsuario(id);
+            String msg=cliSer.ActualizarCliente(cli);
+            Object[]fil =cliSer.validar(user, pass);
+            request.getSession().setAttribute("SesionCliente", fil);
+            out.println(new Gson().toJson("Datos Actualizados"));
+            
         }
         if (acc.equalsIgnoreCase("LogOut")) {
             HttpSession se=request.getSession();

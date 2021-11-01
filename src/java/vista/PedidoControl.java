@@ -5,9 +5,11 @@
  */
 package vista;
 
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -100,9 +102,11 @@ public class PedidoControl extends HttpServlet {
 //             response.sendRedirect("PedidoGui.jsp");
 //        }
         if (acc.equalsIgnoreCase("Comprar")) {
+            PrintWriter out = response.getWriter();
             HttpSession se=request.getSession();
             Object[]fil=(Object[])se.getAttribute("SesionCliente");
             if (fil!=null) {
+                response.setContentType("application/json;charset=UTF-8");
                 int idCliente=(int)fil[0];
                 String msg=pedSer.grabarPedido(idCliente);
                 pedPre=new PedidoPresentador();
@@ -110,16 +114,18 @@ public class PedidoControl extends HttpServlet {
                 pedSer.NuevoPedido();
                 request.getSession().setAttribute("pedPre", pedPre);
                 pedPre.setLis(pedSer.quitarArticulo(""));
-                response.sendRedirect(("carrito.jsp"));
+                out.println(new Gson().toJson("Compra exitosa"));
+                //response.sendRedirect(("carrito.jsp"));
             }else{
-               response.sendRedirect("login.jsp");
-               
+                out.println(new Gson().toJson("Inicie Sesion"));
+               //response.sendRedirect("login.jsp");
             }
-       
-//            se.removeAttribute("SesionCliente");
-//            String cod=request.getParameter("cod");
-//            pedPre.setMsg(pedSer.grabarPedido(Integer.parseInt(cod)));
-//            response.sendRedirect("carrito.jsp");
+
+        }
+        if(acc.equalsIgnoreCase("verPedidos")){
+            int cod=Integer.parseInt(request.getParameter("id"));
+            pedPre.setLis2(pedSer.VerMisPedidos(cod));
+            response.sendRedirect("MisPedidos.jsp");
         }
         if (acc.equalsIgnoreCase("reporte")) {
             response.setContentType("application/PDF");
@@ -127,12 +133,14 @@ public class PedidoControl extends HttpServlet {
             response.setHeader("Cache-Control", "no-cache");
             response.setHeader("Pragma", "no-cache");
             response.setDateHeader("Expires", 0);
+            String codPedido=request.getParameter("id");
             try {
-                pedSer=new PedidoServicioImp();
                 OutputStream out =response.getOutputStream();
-                pedSer.GenerarBoletaPedido(out, 3);
+                pedSer.GenerarBoletaPedido(out, codPedido);
+                //response.sendRedirect("carrito.jsp");
             } catch (Exception e) {
             }
+              
         }
     }
 

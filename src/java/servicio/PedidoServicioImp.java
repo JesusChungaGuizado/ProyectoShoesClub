@@ -122,24 +122,28 @@ public class PedidoServicioImp implements PedidoServicio{
     }
 
     @Override
-    public void GenerarBoletaPedido(OutputStream out,int cod) {
+    public void GenerarBoletaPedido(OutputStream out,String codPedido) {
        PedidoBoleta p=new PedidoBoleta();
         try {
             p.setEncabezado("COMPROBANTE DE PEDIDO");
             String[]nombre=new String[]{"Cantidad","Descripción","Precio Unitario","Descuento(%)","Subtotal(S/)"};
             p.setThead(nombre);
-            List pedido=pdao.VerMiPedido(cod);
-            Object[] pd=(Object[])pedido.get(0);
+            Object[]datosPedido=pdao.verDatosPedido(codPedido);
             //p.setlistaDatosPedido(pedido);
-            p.setCodPedido(pd[0].toString());
-            p.setFecha(pd[1].toString());
-            p.setTotal((double)pd[2]);
-            p.setListaPed(pdao.verDetallePedido(pd[0].toString()));
+            p.setCodPedido(datosPedido[0].toString());
+            p.setFecha(datosPedido[1].toString());
+            p.setTotal((double)datosPedido[2]);
+            p.setListaPed(pdao.verDetallePedido(datosPedido[0].toString()));
             
             p.generaBoleta(out);
         } catch (Exception e) {
         }
      
+    }
+
+    @Override
+    public List VerMisPedidos(int codCli) {
+        return pdao.VerMiPedido(codCli);
     }
 
    
