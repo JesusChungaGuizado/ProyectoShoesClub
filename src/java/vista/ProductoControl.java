@@ -6,8 +6,10 @@
 package vista;
 
 import com.google.gson.Gson;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,6 +17,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import negocio.Producto;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileItemFactory;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import servicio.*;
 /**
@@ -40,6 +46,95 @@ public class ProductoControl extends HttpServlet {
             throws ServletException, IOException {
          PrintWriter out = response.getWriter();
         String acc=request.getParameter("acc");
+          Producto p=new Producto();
+        
+        if (acc.equalsIgnoreCase("Guardar")) {
+                ArrayList<String> lista =new ArrayList<>();
+                try {
+                    FileItemFactory file = new DiskFileItemFactory();
+                    ServletFileUpload fileUpload = new ServletFileUpload(file);
+                    List items = fileUpload.parseRequest(request);
+                    for (int i = 0; i < items.size(); i++) {
+                        FileItem fileItem = (FileItem) items.get(i);
+                        if (!fileItem.isFormField()) {
+                            //"E:\\EjerciciosUML_JEE\\ListadoAjax\\web\\img\\" 
+                            File f = new File("c:\\xampp\\htdocs\\img\\"+ fileItem.getName());
+                            fileItem.write(f);
+                            //     img/ 
+                            p.setImagen("http://localhost/img/"+fileItem.getName());
+                        } else {
+                            lista.add(fileItem.getString());
+                        }
+                    }
+                    p.setNombre(lista.get(1));
+                    p.setMarca(lista.get(2));
+                    p.setTalla(Integer.parseInt(lista.get(3)));
+                    p.setStock(Integer.parseInt(lista.get(4)));
+                    p.setPrecioNormal(Double.parseDouble(lista.get(5)));
+                    p.setSexo(lista.get(6));
+                    p.setDescuento(Integer.parseInt(lista.get(7)));
+                    p.setCategoria(Integer.parseInt(lista.get(8)));
+                    p.setDescripcion(lista.get(9));
+                    
+                  response.setContentType("application/json;charset=UTF-8");
+                  out.println(new Gson().toJson(proSer.RegistrarProducto(p)));
+                
+                } catch (Exception e) {
+                }
+        }
+         if (acc.equalsIgnoreCase("Listar")) {
+              response.setContentType("application/json;charset=UTF-8");
+              out.println(new Gson().toJson(proSer.listarProductos()));
+        }
+         if (acc.equalsIgnoreCase("Buscar")) {
+             int id=Integer.parseInt(request.getParameter("id"));
+              response.setContentType("application/json;charset=UTF-8");
+              out.println(new Gson().toJson(proSer.buscarProducto(id)));
+        }
+         if (acc.equalsIgnoreCase("Delete")) {
+            int cod=Integer.parseInt(request.getParameter("id"));
+            response.setContentType("application/json;charset=UTF-8");
+            out.println(new Gson().toJson(proSer.eliminarProducto(cod)));
+            
+        }
+         if (acc.equalsIgnoreCase("Actualizar")) {
+             ArrayList<String> lista =new ArrayList<>();
+                try {
+                    FileItemFactory file = new DiskFileItemFactory();
+                    ServletFileUpload fileUpload = new ServletFileUpload(file);
+                    List items = fileUpload.parseRequest(request);
+                    for (int i = 0; i < items.size(); i++) {
+                        FileItem fileItem = (FileItem) items.get(i);
+                        if (!fileItem.isFormField()) {
+                            //"E:\\EjerciciosUML_JEE\\ListadoAjax\\web\\img\\" 
+                            File f = new File("c:\\xampp\\htdocs\\img\\"+ fileItem.getName());
+                            fileItem.write(f);
+                            //     img/ 
+                            p.setImagen("http://localhost/img/"+fileItem.getName());
+                        } else {
+                            lista.add(fileItem.getString());
+                        }
+                    }
+                    if(lista.size()==11){
+                        p.setImagen(lista.get(10));
+                    }
+                    p.setIdProducto(Integer.parseInt(lista.get(0)));
+                    p.setNombre(lista.get(1));
+                    p.setMarca(lista.get(2));
+                    p.setTalla(Integer.parseInt(lista.get(3)));
+                    p.setStock(Integer.parseInt(lista.get(4)));
+                    p.setPrecioNormal(Double.parseDouble(lista.get(5)));
+                    p.setSexo(lista.get(6));
+                    p.setDescuento(Integer.parseInt(lista.get(7)));
+                    p.setCategoria(Integer.parseInt(lista.get(8)));
+                    p.setDescripcion(lista.get(9));
+                    
+                  response.setContentType("application/json;charset=UTF-8");
+                  out.println(new Gson().toJson(proSer.actualizarProducto(p)));
+                
+                } catch (Exception e) {
+                }
+        }
         if (acc.equalsIgnoreCase("Ofertas")) {
              response.setContentType("application/json;charset=UTF-8");
              out.println(new Gson().toJson(proSer.listarOfertas()));

@@ -3,18 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/EjerciciosUML_JEE/ProyectoCalzado/web/MisPedidos.jsp</file>
-            <file>file:/E:/EjerciciosUML_JEE/ProyectoCalzado/src/java/servicio/ClienteServicioImp.java</file>
-            <file>file:/E:/EjerciciosUML_JEE/ProyectoCalzado/web/login.jsp</file>
-            <file>file:/E:/EjerciciosUML_JEE/ProyectoCalzado/web/css/styleMenu.css</file>
-            <file>file:/E:/EjerciciosUML_JEE/ProyectoCalzado/web/css/style_Login.css</file>
-            <file>file:/E:/EjerciciosUML_JEE/ProyectoCalzado/web/css/style.css</file>
-            <file>file:/E:/EjerciciosUML_JEE/ProyectoCalzado/web/index.jsp</file>
-            <file>file:/E:/EjerciciosUML_JEE/ProyectoCalzado/src/java/vista/ClienteControl.java</file>
-            <file>file:/E:/EjerciciosUML_JEE/ProyectoCalzado/web/Menu.jsp</file>
-            <file>file:/E:/EjerciciosUML_JEE/ProyectoCalzado/src/java/servicio/ClienteServicio.java</file>
-            <file>file:/E:/EjerciciosUML_JEE/ProyectoCalzado/web/js/Cliente.js</file>
-            <file>file:/E:/EjerciciosUML_JEE/ProyectoCalzado/src/java/servicio/ProductoServicioImp.java</file>
+            <file>file:/E:/EjerciciosUML_JEE/ProyectoCalzado/web/crudProducto.jsp</file>
         </group>
     </open-files>
 </project-private>

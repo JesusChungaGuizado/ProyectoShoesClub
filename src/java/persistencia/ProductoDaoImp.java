@@ -6,6 +6,7 @@
 package persistencia;
 
 import java.util.List;
+import negocio.Producto;
 
 /**
  *
@@ -29,6 +30,30 @@ public class ProductoDaoImp implements ProductoDao{
     public List FiltrarProducto(int cat, String sexo) {
         String sql="{call FiltrarCalzado("+cat+",'"+sexo+"')}";
         return Operacion.listar(sql);
+    }
+
+    @Override
+    public List listarProductos() {
+        String sql="{call ListarCalzados()}";
+        return Operacion.listar(sql);
+    }
+
+    @Override
+    public String registrarProducto(Producto pro) {
+        String sql="{call RegistrarCalzado('"+pro.getNombre()+"','"+pro.getMarca()+"','"+pro.getDescripcion()+"',"+pro.getPrecioNormal()+",'"+pro.getImagen()+"',"+pro.getCategoria()+",'"+pro.getSexo()+"',"+pro.getDescuento()+","+pro.getTalla()+","+pro.getStock()+")}";
+        return Operacion.ejecutar(sql);
+    }
+
+    @Override
+    public String eliminarProducto(int id) {
+        String sql="{call EliminarCalzado("+id+")}";
+        return Operacion.ejecutar(sql);
+    }
+
+    @Override
+    public String actualizarProducto(Producto pro) {
+        String sql="{call ActualizarCalzado("+pro.getIdProducto()+",'"+pro.getNombre()+"','"+pro.getMarca()+"','"+pro.getDescripcion()+"',"+pro.getPrecioNormal()+",'"+pro.getImagen()+"',"+pro.getCategoria()+",'"+pro.getSexo()+"',"+pro.getDescuento()+","+pro.getTalla()+","+pro.getStock()+")}";
+        return Operacion.ejecutar(sql);
     }
     
 }

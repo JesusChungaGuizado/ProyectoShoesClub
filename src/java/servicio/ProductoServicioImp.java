@@ -42,6 +42,8 @@ public class ProductoServicioImp implements ProductoServicio{
             p.setDescuento((int)pro[8]);
             p.setPrecioOferta((double)pro[9]);
             p.setTalla((int)pro[11]);
+            p.setSexo(pro[10].toString());
+            p.setStock((int)pro[12]);
             return p;
         }
         return null;
@@ -50,6 +52,38 @@ public class ProductoServicioImp implements ProductoServicio{
     @Override
     public List FiltrarProductos(int cat, String sexo) {
         return proDao.FiltrarProducto(cat, sexo);
+    }
+
+    @Override
+    public String RegistrarProducto(Producto pro) {
+        String msg=proDao.registrarProducto(pro);
+        if (msg==null) {
+            msg="Producto Registrado";
+        }
+        return msg;
+    }
+
+    @Override
+    public List listarProductos() {
+        return proDao.listarProductos();
+    }
+
+    @Override
+    public String eliminarProducto(int id) {
+      String msg=proDao.eliminarProducto(id);
+        if (msg==null) {
+            msg="Producto Eliminado";
+        }
+        return msg;
+    }
+
+    @Override
+    public String actualizarProducto(Producto pro) {
+        String msg=proDao.actualizarProducto(pro);
+        if (msg==null) {
+            msg="Producto Actualizado";
+        }
+        return msg;
     }
     
 }

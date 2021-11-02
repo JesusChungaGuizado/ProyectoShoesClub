@@ -15,4 +15,8 @@ public interface ProductoServicio {
     public List listarOfertas();
     public Producto buscarProducto(int cod);
     public List FiltrarProductos(int cat,String sexo);
+    public String RegistrarProducto(Producto pro);
+    public List listarProductos();
+    public String eliminarProducto(int id);
+    public String actualizarProducto(Producto pro);
 }

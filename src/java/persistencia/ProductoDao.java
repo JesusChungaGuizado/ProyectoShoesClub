@@ -6,6 +6,7 @@
 package persistencia;
 
 import java.util.List;
+import negocio.Producto;
 
 /**
  *
@@ -13,6 +14,10 @@ import java.util.List;
  */
 public interface ProductoDao {
     public List listarOfertas();
-   public Object[]buscarProducto(int cod);
-   public List FiltrarProducto(int cat,String sexo);
+    public Object[]buscarProducto(int cod);
+    public List FiltrarProducto(int cat,String sexo);
+    public List listarProductos();
+    public String registrarProducto(Producto pro);
+    public String eliminarProducto(int id);
+    public String actualizarProducto(Producto pro);
 }
