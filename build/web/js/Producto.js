@@ -5,15 +5,27 @@ cargarOfertas();
         $("#myModal").modal();
     });
  cargaListado();
+
   //  cargaCategoria();
     registrar();
    actualizar();
    mostrarImagenInput();
+   filtro();
+   
 });
+function filtro(){
+    $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#tabla-producto tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+}
 $(".custom-file-input").on("change", function() {
   var fileName = $(this).val().split("\\").pop();
   $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
 });
+
 function cargarOfertas(){
      $.ajax({
         type: 'GET',

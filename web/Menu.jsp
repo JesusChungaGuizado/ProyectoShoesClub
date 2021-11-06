@@ -33,7 +33,8 @@
                         </div>
                         <div  class="nav-usuario__operacion">
                             <a href="Menu.jsp" class="link"><i class='bx bx-user-pin' ></i> Mi Perfil</a><br>
-                            <a href="PedidoControl?acc=verPedidos&id=<%= fil[0] %>" class="link"><i class='bx bx-list-ul'></i> Mis Pedidos</a>
+                            <a href="PedidoControl?acc=verPedidos&id=<%= fil[0] %>" class="link"><i class='bx bx-list-ul'></i> Mis Pedidos</a><br>
+                            <a href="ClienteControl?acc=LogOut" class="link"><i class='bx bx-log-out'></i> Log Out</a>
                         </div>
                     </div>
                     <!----------FORMULARIO DE DATOS USUARIO----------------->
