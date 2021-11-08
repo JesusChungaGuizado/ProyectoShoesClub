@@ -14,6 +14,9 @@
           <link rel="stylesheet" href="css/styleAdmin.css">
     </head>
     <body>
+         <% if (session.getAttribute("SesionAdmin")==null) {
+                response.sendRedirect("loginAdmin.jsp");
+            }%>
            <jsp:include page="navAdmin.jsp" />
            <div class="main-content">
                 <div class="headerp">

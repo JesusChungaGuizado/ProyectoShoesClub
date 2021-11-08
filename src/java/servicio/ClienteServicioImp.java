@@ -32,7 +32,6 @@ public class ClienteServicioImp implements ClienteServicio{
             fil[4]=cli.getDireccion();
             fil[5]=cli.getUsuario();
             fil[6]=cli.getPassword();
-            fil[7]=cli.getPermiso();
             return fil;
         }
         return null;

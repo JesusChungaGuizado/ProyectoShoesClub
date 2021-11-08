@@ -125,7 +125,7 @@ public class PedidoServicioImp implements PedidoServicio{
     public void GenerarBoletaPedido(OutputStream out,String codPedido) {
        PedidoBoleta p=new PedidoBoleta();
         try {
-            p.setEncabezado("COMPROBANTE DE PEDIDO");
+            p.setEncabezado("COMPROBANTE");
             String[]nombre=new String[]{"Cantidad","Descripción","Precio Unitario","Descuento(%)","Subtotal(S/)"};
             p.setThead(nombre);
             Object[]datosPedido=pdao.verDatosPedido(codPedido);

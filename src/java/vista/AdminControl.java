@@ -13,8 +13,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import negocio.Cliente;
 import servicio.AdminServicio;
 import servicio.AdminServicioImp;
+import negocio.Empleado;
 
 /**
  *
@@ -41,6 +44,105 @@ public class AdminControl extends HttpServlet {
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
         String acc=request.getParameter("acc");
+         if (acc.equalsIgnoreCase("LogIn")) {
+            String user=request.getParameter("user");
+            String pass=request.getParameter("pass");
+            Object[]fil2 =admSer.validar(user, pass);
+            response.setContentType("application/json;charset=UTF-8");
+            if(fil2!=null){
+                request.getSession().setAttribute("SesionAdmin", fil2);
+                out.println(new Gson().toJson("Bienvenido"));
+            }else{
+                 out.println(new Gson().toJson("Usuario o Contraseña incorrecta"));
+            }
+        }
+          if (acc.equalsIgnoreCase("LogOut")) {
+            HttpSession se=request.getSession();
+            se.removeAttribute("SesionAdmin");
+            response.sendRedirect("loginAdmin.jsp");
+        }
+           if (acc.equalsIgnoreCase("RegistrarEmpleado")) {
+            response.setContentType("application/json;charset=UTF-8");
+            String nombre=request.getParameter("nombre");
+            String email=request.getParameter("email");
+            String celular=request.getParameter("cel");
+            String direc=request.getParameter("dir");
+            String user=request.getParameter("usu");
+            String pass=request.getParameter("pass");
+            String dni=request.getParameter("dni");
+            int cargo=Integer.parseInt(request.getParameter("cargo"));
+            Empleado emp=new Empleado(dni,cargo,nombre, email, celular, direc, user, pass);
+            out.println(new Gson().toJson(admSer.registrarEmpleado(emp)));
+        }
+           if (acc.equalsIgnoreCase("ActualizarEmpleado")) {
+            response.setContentType("application/json;charset=UTF-8");
+            int cod=Integer.parseInt(request.getParameter("cod"));
+            String nombre=request.getParameter("nombre");
+            String email=request.getParameter("email");
+            String celular=request.getParameter("cel");
+            String direc=request.getParameter("dir");
+            String user=request.getParameter("usu");
+            String pass=request.getParameter("pass");
+            String dni=request.getParameter("dni");
+            int cargo=Integer.parseInt(request.getParameter("cargo"));
+            Empleado emp=new Empleado(dni,cargo,nombre, email, celular, direc, user, pass);
+            emp.setIdUsuario(cod);
+            out.println(new Gson().toJson(admSer.actualizarEmpleado(emp)));
+        }
+            if (acc.equalsIgnoreCase("listarEmpleados")) {
+            response.setContentType("application/json;charset=UTF-8");
+            out.println(new Gson().toJson(admSer.listarEmpleados()));
+        }
+            if (acc.equalsIgnoreCase("BuscarEmpleado")) {
+             int id=Integer.parseInt(request.getParameter("id"));
+              response.setContentType("application/json;charset=UTF-8");
+              out.println(new Gson().toJson(admSer.buscarEmpleado(id)));
+        }
+             if (acc.equalsIgnoreCase("DeleteEmpleado")) {
+            int cod=Integer.parseInt(request.getParameter("id"));
+            response.setContentType("application/json;charset=UTF-8");
+            out.println(new Gson().toJson(admSer.eliminarEmpleado(cod)));
+            
+        }
+             if (acc.equalsIgnoreCase("RegistrarCliente")) {
+            response.setContentType("application/json;charset=UTF-8");
+            String nombre=request.getParameter("nombre");
+            String email=request.getParameter("email");
+            String celular=request.getParameter("cel");
+            String direc=request.getParameter("dir");
+            String user=request.getParameter("usu");
+            String pass=request.getParameter("pass");
+            Cliente cli=new Cliente(nombre, email, celular, direc, user, pass);
+            out.println(new Gson().toJson(admSer.registrarCliente(cli)));
+        }
+           if (acc.equalsIgnoreCase("ActualizarCliente")) {
+            response.setContentType("application/json;charset=UTF-8");
+            int cod=Integer.parseInt(request.getParameter("cod"));
+            String nombre=request.getParameter("nombre");
+            String email=request.getParameter("email");
+            String celular=request.getParameter("cel");
+            String direc=request.getParameter("dir");
+            String user=request.getParameter("usu");
+            String pass=request.getParameter("pass");
+            Cliente cli=new Cliente(nombre, email, celular, direc, user, pass);
+            cli.setIdUsuario(cod);
+            out.println(new Gson().toJson(admSer.actualizarCliente(cli)));
+        }
+            if (acc.equalsIgnoreCase("listarClientes")) {
+            response.setContentType("application/json;charset=UTF-8");
+            out.println(new Gson().toJson(admSer.listarClientes()));
+        }
+            if (acc.equalsIgnoreCase("BuscarCliente")) {
+             int id=Integer.parseInt(request.getParameter("id"));
+              response.setContentType("application/json;charset=UTF-8");
+              out.println(new Gson().toJson(admSer.buscarCliente(id)));
+        }
+             if (acc.equalsIgnoreCase("DeleteCliente")) {
+            int cod=Integer.parseInt(request.getParameter("id"));
+            response.setContentType("application/json;charset=UTF-8");
+            out.println(new Gson().toJson(admSer.eliminarCliente(cod)));
+            
+        }
         if (acc.equalsIgnoreCase("listarPedidos")) {
             response.setContentType("application/json;charset=UTF-8");
             out.println(new Gson().toJson(admSer.listarPedidos()));

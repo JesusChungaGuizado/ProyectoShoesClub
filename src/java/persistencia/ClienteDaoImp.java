@@ -26,7 +26,6 @@ public class ClienteDaoImp implements ClienteDao{
              cli.setDireccion(fil[4].toString());
              cli.setUsuario(fil[5].toString());
              cli.setPassword(fil[6].toString());
-             cli.setPermiso((int)fil[7]);
              return cli;
          }
          return null;
@@ -51,7 +50,6 @@ public class ClienteDaoImp implements ClienteDao{
              cli.setDireccion(fil[4].toString());
              cli.setUsuario(fil[5].toString());
              cli.setPassword(fil[6].toString());
-             cli.setPermiso((int)fil[7]);
              return cli;
          }
          return null;

@@ -9,7 +9,7 @@ package negocio;
  *
  * @author Jesus
  */
-public class Usuario {
+public abstract class Usuario {
     private int idUsuario ;
     private String nombre;
     private String email;
@@ -17,7 +17,7 @@ public class Usuario {
     private String direccion;
     private String usuario;
     private String password;
-    private int permiso;
+    
 
     public Usuario() {
     }
@@ -87,13 +87,7 @@ public class Usuario {
         this.password = password;
     }
 
-    public int getPermiso() {
-        return permiso;
-    }
-
-    public void setPermiso(int permiso) {
-        this.permiso = permiso;
-    }
+    
    
     
 }

@@ -37,12 +37,12 @@ import javax.servlet.http.Cookie;
  * @author Jesus
  */
 public class PedidoBoleta {
-    String encabezado;
-    List listaPedido;
-    String[] thead;
-    String codPedido;
-    String fecha;
-    double total;
+    private String encabezado;
+    private List listaPedido;
+    private String[] thead;
+    private String codPedido;
+    private String fecha;
+    private double total;
     public PedidoBoleta(String encabezado, List listaPed, String[] thead) {
         this.encabezado = encabezado;
         this.listaPedido = listaPed;

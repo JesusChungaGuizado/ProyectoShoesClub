@@ -67,7 +67,7 @@ body{
     margin-left: .5rem;
 }
 .sidebar-user{
-    margin: 0rem 0rem 1rem 0rem;
+    margin: 0rem 0rem 0.5rem 0rem;
     text-align: center;
 }
 .sidebar-user img{
@@ -78,9 +78,11 @@ body{
     border-right: 2px solid #efefef;
     border-bottom: 2px solid #efefef;
     border-top: 2px solid #efefef;
+    margin-bottom: 0.5rem;
 }
 .sidebar-user h3{
     font-size: 1rem;
+    margin: 0;
 }
 .sidebar-user span{
     font-size: .8rem;
@@ -329,10 +331,14 @@ overflow: auto;
 /*------------------------------*/
 
 .nav__link{
-    color: #8da2fb;
+    color: #F6F8FA ;
     display: block;
     padding: 10px 0;
     text-decoration: none;
+}
+.nav__link:hover {
+    color: #F6F8FA ;
+
 }
 
 .nav__link--inside{
@@ -404,6 +410,7 @@ border-radius: 4px;
 .list__arrow{
     margin-left: auto;
     transition: transform .3s;
+    width: 10px;
 }
 
 .list__show{
@@ -462,6 +469,15 @@ align-items: center;
         "inp9 inp9 inp9 inp9 inp9 inp9"
         "inp10 inp10 inp10 inp10 inp10 inp10"
         "inp11 . . . . .";
+    gap:0.5rem;
+}
+.container-inputs2{
+    display: grid;
+    grid-template-areas:
+        "inp1 inp1 inp1 inp2 inp2 inp2"
+        "inp3 inp3 inp4 inp4 inp5 inp5"
+        "inp6 inp6 inp6 inp6 inp6 inp6"
+        "inp7 . . . . .";
     gap:0.5rem;
 }
 .input-item:nth-child(2){
