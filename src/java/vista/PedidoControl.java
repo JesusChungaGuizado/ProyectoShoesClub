@@ -57,6 +57,7 @@ public class PedidoControl extends HttpServlet {
              pedSer=new PedidoServicioImp();
              pedSer.NuevoPedido();
              request.getSession().setAttribute("pedPre", pedPre);
+             request.getSession().setAttribute("ofertas", proSer.listarOfertas());
              pedPre.setLis(pedSer.quitarArticulo(""));
              response.sendRedirect("index.jsp");
         }

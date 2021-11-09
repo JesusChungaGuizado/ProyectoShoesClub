@@ -37,17 +37,27 @@
                     </div>
                 </div>
                <main>
+                   <div class="page-header mb-3">
+                        <div>
+                            <h1>Pedidos</h1>
+                        </div>
+                        <div class="header-actions">
+                            <button id="export">
+                                <span  class="far fa-file-pdf" ></span>
+                                Export PDF
+                            </button>
+                        </div>
+                    </div>
                    <div class="botones-crud">
-                       <h2>Pedidos</h2>
                        <input class="form-control mb-3" id="myInput" type="text" placeholder="Search..">
                    </div>
                    
             
             <div class="row">
 
-                <div class="col-sm-12">
-                    <table class="table  table-hover">
-                        <thead class="table-light">
+                <div class="col-sm-12 title-report">
+                    <table class="table table-hover table-light">
+                        <thead >
                             <tr >
                                 <th>idPedidos</th>
                                 <th>Fecha</th>
@@ -56,8 +66,8 @@
                                 <th>Celular</th>
                                 <th>Estado</th>
                                 
-                                <th>Ver Detalle</th>
-                                <th>Estado</th>
+                                <th class="operation">Ver Detalle</th>
+                                <th class="operation">Estado</th>
                                 
                                  
                             </tr>

@@ -5,6 +5,7 @@
  */
 package persistencia;
 
+import java.util.ArrayList;
 import java.util.List;
 import negocio.Cliente;
 import negocio.Empleado;
@@ -106,4 +107,30 @@ public class AdminDaoImp implements AdminDao {
          return Operacion.ejecutar(sql);
     }
 
+    @Override
+    public List verDatos() {
+         String sql="{call MontoTotalVentas()}";
+         String sql2="{call CantidadClientes()}";
+         String sql3="{call CantidadPedidos()}";
+         String sql4="{call CantidadProductos()}";
+         String sql5="{call CantidadVentas()}";
+         List datos=new ArrayList();
+         datos.add(0, Operacion.buscar(sql));
+          datos.add(1, Operacion.buscar(sql2));
+           datos.add(2, Operacion.buscar(sql3));
+            datos.add(3, Operacion.buscar(sql4));
+             datos.add(4, Operacion.buscar(sql5));
+        
+         return datos; 
+    }
+     @Override
+    public List listarConsultas(){
+         String sql = "{call ListarConsultas()}";
+        return Operacion.listar(sql);
+    }
+    @Override
+    public String eliminarConsulta(int id){
+        String sql="{call EliminarConsulta("+id+")}";
+        return Operacion.ejecutar(sql);
+    }
 }

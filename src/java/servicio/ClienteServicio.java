@@ -12,8 +12,9 @@ import negocio.*;
  * @author Jesus
  */
 public interface ClienteServicio {
-     public Object[]validar(String usu,String pas);
-     public String RegistrarCliente(Cliente cli);
-      public String BuscarCliente(String usu);
-      public String ActualizarCliente(Cliente cli);
+    public Object[]validar(String usu,String pas);
+    public String RegistrarCliente(Cliente cli);
+    public String BuscarCliente(String usu);
+    public String ActualizarCliente(Cliente cli);
+    public String RegistrarConsulta(String nom,String correo,String cel,String asunto,String consulta);
 }

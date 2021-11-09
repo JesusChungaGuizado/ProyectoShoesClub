@@ -16,7 +16,7 @@
                 <ul id="menu">
                     <li class="list"><a class="links" href="index.jsp">Home</a></li>
                     <li class="list"><a class="links" href="ProductoControl?acc=ListaOfertas">Calzados</a></li>
-                    <li class="list"><a class="links" href="#ofertas">Ofertas</a></li>
+                    <li class="list"><a class="links" href="contactos.jsp">Contactenos</a></li>
                     <% 
                         HttpSession ses=request.getSession();
                         if (ses.getAttribute("SesionCliente")!=null) {

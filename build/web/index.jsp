@@ -1,4 +1,6 @@
 
+<%@page import="java.util.Locale"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -59,22 +61,37 @@
                     <i class="fas fa-chevron-left"></i>
                 </button>
                 <div id="carrusel-Ofertas" class="carousel__lista ">
-                   <template id="template-ofertas">
-                       <div class="carousel__elemento" style="width: 360px">
+                    <%
+             HttpSession ofertas=request.getSession();
+            if (ofertas.getAttribute("ofertas")!=null) {
+                List ofer=(List)ofertas.getAttribute("ofertas");
+                for (int i = 0; i < ofer.size(); i++) {
+                    Object[] fil=(Object[])ofer.get(i);
+                    %>
+                    <div class="carousel__elemento" >
                             <div class="cards-product-item">
-                              <a href="details_Product.html">
-                                <span class="desc">-25%</span>
-                                <img class="img-oferta" src="img/1UCK0020019_1.jpg" />
+                              <a href="ProductoControl?acc=view&id=<%=fil[0]%>">
+                                <span class="desc">-<%=fil[8]%>%</span>
+                                <img class="img-oferta" src="<%=fil[5]%>" />
                                 <div class="product-item-detail">
-                                  <span class="marca" >CALIMOD</span>
-                                  <h4 class="nombre">Zapatilla Urbana Negro 1UEM001</h4>
-                                  <h3 class="pre-normal">S/279.80</h3>
+                                    <div>
+                                        <span class="marca" ><%=fil[2]%></span>
+                                        <h4 class="nombre"><%=fil[1]%></h4>
+                                    </div>
+                                    <div>
+                                        <p>S/<%=String.format(Locale.ROOT,"%.2f", (double)fil[4] )%></p>
+                                         <h3 class="pre-normal">S/<%=String.format(Locale.ROOT,"%.2f", (double)fil[9] )%></h3>
+                                    </div>
+                                 
                                 </div>
                               </a>
                             </div>
                         </div>
-                            
-                        </template>
+                  
+              <% }
+               } %> 
+                  
+                    
                     
                 </div>
                 <button aria-label="Siguiente" class="carousel__siguiente">

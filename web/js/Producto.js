@@ -1,17 +1,15 @@
 $(document).ready(function () {
-cargarOfertas();
- $("#myBtn").click(function () {
+    $("#myBtn").click(function () {
         $('#formulario').trigger('reset');
         $("#myModal").modal();
     });
- cargaListado();
-
-  //  cargaCategoria();
+    cargaListado();
     registrar();
-   actualizar();
-   mostrarImagenInput();
-   filtro();
-   
+    actualizar();
+    mostrarImagenInput();
+    filtro();
+   var btn_exportar=document.getElementById("export");
+   btn_exportar.addEventListener("click",()=>print());
 });
 function filtro(){
     $("#myInput").on("keyup", function() {
@@ -21,63 +19,11 @@ function filtro(){
     });
   });
 }
+//Filtrado de input de busqueda
 $(".custom-file-input").on("change", function() {
   var fileName = $(this).val().split("\\").pop();
   $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
 });
-
-function cargarOfertas(){
-     $.ajax({
-        type: 'GET',
-        url: 'ProductoControl?acc=Ofertas',
-        async: true,
-        cache: false,
-        success: function (resp) {
-            var tabla_products = document.querySelector("#carrusel-Ofertas");
-            var template = document.querySelector("#template-ofertas").content;
-            var fragment = document.createDocumentFragment();
-            console.log(template);
-//            let oferta=document.getElementById('carruesel-ofertas')
-//                  var text="";
-            $.each(resp, function (indice, lista) {
-                
-          
-                
-//                
-//                 text+='<div   class="carousel__elemento">'
-//                text+= '           <div class="cards-product-item">'
-//                     text+= '          <a href="details_Product.html">'
-//                       text+= '          <span class="desc">-'+ lista[8]+ '%</span>'
-//                        text+= '         <img class="img-oferta" src="img/1UCK0020019_1.jpg" />'
-//                          text+= '       <div class="product-item-detail">'
-//                           text+= '        <span class="marca" >CALIMOD</span>'
-//                           text+= '        <h4 class="nombre">Zapatilla Urbana Negro 1UEM001</h4>'
-//                            text+= '       <h3 class="pre-normal">S/279.80</h3>'
-//                            text+= '     </div>'
-//                           text+= '    </a>'
-//                          text+= '   </div>'
-//                       
-//                    text+= '   </div> '
-                console.log(lista)
-                
-                template.querySelectorAll('span')[0].textContent = lista[8];
-                template.querySelector('img').setAttribute('src', lista[5]);
-                template.querySelectorAll('span')[1].textContent = lista[2];
-                template.querySelector('h4').textContent = lista[1];
-                template.querySelector('h3').textContent = lista[4];
-             
-
-                var clone = template.cloneNode(true);
-                fragment.appendChild(clone);
-            });
-            //oferta.innerHTML=text;
-            tabla_products.appendChild(fragment);
-            //eliminar();
-            //buscar();
-            // actualizar();
-        }
-    });
-}
 
 function registrar() {
     $("#formulario").submit(function (e) {
@@ -261,10 +207,7 @@ function actualizar() {
         paqueteDeDatos.append('descu', $('#descu2').prop('value'));
         paqueteDeDatos.append('catego', $('#catego2').prop('value'));
         paqueteDeDatos.append('descrip', $('#descrip2').prop('value'));
-     
-
-
-
+        //Se valida el input imagen si continen algun elemento
         if (document.getElementById("img2").files.length == 0) {
             console.log("Esta vacio");
             paqueteDeDatos.append('foto', $('#foto').prop('src'));
@@ -272,10 +215,6 @@ function actualizar() {
             console.log("Esta lleno");
             paqueteDeDatos.append('img2', $('#img2')[0].files[0]);
         }
-
-
-
-
         //console.log("actualizar");
         //console.log(paqueteDeDatos);
         $.ajax({

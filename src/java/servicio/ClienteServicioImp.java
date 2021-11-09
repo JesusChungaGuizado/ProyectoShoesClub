@@ -63,5 +63,14 @@ public class ClienteServicioImp implements ClienteServicio{
         }
         return msg;
     }
+
+    @Override
+    public String RegistrarConsulta(String nom, String correo, String cel, String asunto, String consulta) {
+        String msg=cliDao.RegistrarConsulta(nom, correo, cel, asunto, consulta);
+        if (msg==null) {
+            msg="Consulta Registrada";
+        }
+        return msg;
+    }
    
 }

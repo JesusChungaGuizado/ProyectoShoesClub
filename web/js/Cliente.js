@@ -17,7 +17,7 @@ function ValidarSesion(){
             data: $("#login").serialize(), // Al atributo data se le asigna el objeto FormData.
             success: function (resultado) {
                 if (resultado=="Bienvenido"){
-                    $("#login").trigger('reset');;
+                    $("#login").trigger('reset');
                      Swal.fire(
                         'Bienvenido!',
                         'Sesión Iniciada!',

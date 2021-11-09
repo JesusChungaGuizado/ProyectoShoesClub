@@ -1,6 +1,8 @@
 $(document).ready(function () {
     ValidarSesion();
+    VerDatos();
     ListarPedidos();
+    ListarConsultas();
     cargaListadoEmpleados();
     registrarEmpleado();
     updateEmpleado();
@@ -11,7 +13,10 @@ $(document).ready(function () {
     filtro("lista-pedidos");
      filtro("tabla-empleado");
      filtro("tabla-cliente");
+      filtro("lista-consulta");
     abrirModal();
+    var btn_exportar=document.getElementById("export");
+    btn_exportar.addEventListener("click",()=>print());
 });
 function filtro(tabla){
     $("#myInput").on("keyup", function() {
@@ -60,6 +65,29 @@ function ValidarSesion(){
         });
     });
 }
+function VerDatos(){
+         $.ajax({
+        type: 'GET',
+        url: 'AdminControl?acc=verDatos',
+        async: true,
+        cache: false,
+        success: function (resp) {
+            var tabla_datos = document.querySelectorAll(".datosMenu");
+           
+            $.each(resp, function (indice, lista) {
+                if (indice==0) {
+                   
+                    tabla_datos[indice].innerHTML="S/"+lista[0].toLocaleString('en-IN', { minimumFractionDigits: 2}); 
+                }else{
+                     tabla_datos[indice].innerHTML=lista[0];   
+                }         
+              console.log(lista);
+            });
+            
+         
+        }
+    }); 
+}
 function ListarPedidos(){
          $.ajax({
         type: 'GET',
@@ -77,8 +105,8 @@ function ListarPedidos(){
                               text+='   <td>'+lista[3]+'</td>';
                               text+='   <td>'+lista[4]+'</td>';
                               text+='   <td><span class="badge badge-pill ">'+lista[5]+'</span></td>';
-                               text+='  <td><a href="PedidoControl?acc=reporte&id='+lista[0]+'" role="button" class="btn btn-light " ><i class="fas fa-list"></i></a></td>';
-                                text+=' <td><div class="btn-group">';
+                               text+='  <td class="operation"><a href="PedidoControl?acc=reporte&id='+lista[0]+'" role="button" class="btn btn-light " ><i class="fas fa-list"></i></a></td>';
+                                text+=' <td class="operation"><div class="btn-group">';
    
                                 text+=' <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">';
                                 text+='   <i class="far fa-edit"></i><span class="caret"></span>';
@@ -88,19 +116,79 @@ function ListarPedidos(){
 //                                 text+='  <a class="dropdown-item" href="#">Cancelar</a>';
                                text+='  </div>';
                                 text+=' </div></td>  ';
-//                text+='  <td><button type="button" class="btn btn-danger delete"><i class="far fa-trash-alt"></i></button></td>';
-                           text+='  </tr>'
-                          
-              
-             
-                console.log(lista)
-                
-               
+                           text+='  </tr>';
             });
             tabla_products.innerHTML=text;
          cambiarColorEstado()
         }
     }); 
+}
+function ListarConsultas(){
+         $.ajax({
+        type: 'GET',
+        url: 'AdminControl?acc=listarConsultas',
+        async: true,
+        cache: false,
+        success: function (resp) {
+            var tabla_products = document.getElementById("lista-consulta");
+            var text="";
+            $.each(resp, function (indice, lista) {
+                          text+='  <tr class="table-light">';
+                             text+='    <td class="codigo">'+lista[0]+'</td>';
+                             text+='    <td class="nombre">'+lista[1]+'</td>';
+                              text+='   <td>'+lista[2]+'</td>';
+                              text+='   <td>'+lista[3]+'</td>';
+                              text+='   <td>'+lista[4]+'</td>';
+                              text+='   <td>'+lista[5]+'</td>';
+                               text+='  <td class="operation"><button type="button" class="btn btn-danger delete"><i class="far fa-trash-alt"></i></button></td>';
+                           text+='  </tr>';
+            });
+            tabla_products.innerHTML=text;
+            eliminarConsulta();
+        }
+    }); 
+}
+function eliminarConsulta() {
+    var botones = document.querySelectorAll(".delete");
+    $.each(botones, function (indice, lista) {
+        lista.addEventListener("click", (e) => {
+            var id = document.querySelectorAll(".codigo")[indice];
+            var nombre = document.querySelectorAll(".nombre")[indice];
+            var dato = "id=" + id.innerHTML;
+            //console.log(id.innerHTML);
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "Se eliminará la consulta de " + nombre.innerHTML + "!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: "AdminControl?acc=EliminarConsulta",
+                        type: 'POST', // Siempre que se envíen ficheros, por POST, no por GET.
+                        data: dato, // Al atributo data se le asigna el objeto FormData.
+                        success: function (resultado) { //si se resive algun una respuesta
+                            // $('#formulario').trigger('reset');
+                            Swal.fire(
+                                    'Deleted!',
+                                    'Your file has been deleted.',
+                                    'success'
+                                    ).then((result) => {
+                                if (result.isConfirmed) {
+                                    parent.location.href = "crudConsultas.jsp";
+                                }
+                            });
+                        }
+                    });
+
+                }
+            });
+
+        });
+    });
 }
 function cambiarColorEstado(){
       var estado=document.querySelectorAll(".badge") ;

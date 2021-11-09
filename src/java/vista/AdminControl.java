@@ -61,6 +61,10 @@ public class AdminControl extends HttpServlet {
             se.removeAttribute("SesionAdmin");
             response.sendRedirect("loginAdmin.jsp");
         }
+          if (acc.equalsIgnoreCase("verDatos")) {
+            response.setContentType("application/json;charset=UTF-8");
+            out.println(new Gson().toJson(admSer.verDatos()));
+        }
            if (acc.equalsIgnoreCase("RegistrarEmpleado")) {
             response.setContentType("application/json;charset=UTF-8");
             String nombre=request.getParameter("nombre");
@@ -151,6 +155,16 @@ public class AdminControl extends HttpServlet {
             String codPed=request.getParameter("id");
             String msg=admSer.cobrarPedido(codPed);
             response.sendRedirect("crudPedidos.jsp");
+        }
+        if (acc.equalsIgnoreCase("ListarConsultas")) {
+            response.setContentType("application/json;charset=UTF-8");
+            out.println(new Gson().toJson(admSer.listarConsultas()));
+        }
+        if (acc.equalsIgnoreCase("EliminarConsulta")) {
+            int cod=Integer.parseInt(request.getParameter("id"));
+            response.setContentType("application/json;charset=UTF-8");
+            out.println(new Gson().toJson(admSer.eliminarConsulta(cod)));
+            
         }
     }
 

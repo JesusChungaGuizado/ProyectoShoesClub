@@ -40,7 +40,7 @@
                 </div>
                <main>
                    <div>
-                    <h1>Analitics Dasbooard</h1>
+                    <h1>Análisis Mensual</h1>
                     <small>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias maiores 
                          iusto soluta quos doloremque quas.</small>
                 </div>
@@ -52,7 +52,7 @@
                                 <span>Monto Total Ventas</span>
                                 <small>Del Mes</small>
                             </div>
-                            <h2>S/300.21</h2>
+                            <h2 class="datosMenu">S/300.21</h2>
                             
                         </div>
                         
@@ -69,7 +69,7 @@
                                 <span>Clientes</span>
                                 <small>Registrados</small>
                             </div>
-                            <h2>100</h2>
+                            <h2 class="datosMenu">100</h2>
                           
                         </div>
                         <div class="card-chart danger">
@@ -84,7 +84,7 @@
                                 <span>Pedidos</span>
                                 <small>Recientes</small>
                             </div>
-                            <h2>20</h2>
+                            <h2 class="datosMenu">20</h2>
                          
                         </div>
                         <div class="card-chart yellow">
@@ -99,7 +99,7 @@
                                 <span>Poductos</span>
                                 <small>Total en inventario</small>
                             </div>
-                            <h2>32</h2>
+                            <h2 class="datosMenu">32</h2>
                             
                         </div>
                         <div class="card-chart yellow">
@@ -115,7 +115,7 @@
                                 <span>Ventas</span>
                                 <small>Del Mes</small>
                             </div>
-                            <h2>20</h2>
+                            <h2 class="datosMenu">20</h2>
                             
                         </div>
                         <div class="card-chart success">
@@ -132,4 +132,6 @@
            
     </body>
     <script src="js/efectoNavAdmin.js"></script>
+     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="js/Admin.js"></script>
 </html>

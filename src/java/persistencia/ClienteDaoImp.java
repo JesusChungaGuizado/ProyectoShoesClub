@@ -60,5 +60,11 @@ public class ClienteDaoImp implements ClienteDao{
        String sql="{call ActualizarCliente("+cli.getIdUsuario()+",'"+cli.getNombre()+"','"+cli.getEmail()+"','"+cli.getCelular()+"','"+cli.getDireccion()+"','"+cli.getUsuario()+"','"+cli.getPassword()+"')}";
        return Operacion.ejecutar(sql);
     }
+
+    @Override
+    public String RegistrarConsulta(String nom, String correo, String cel, String asunto, String consulta) {
+        String sql="{call RegistrarConsulta('"+nom+"','"+correo+"','"+cel+"','"+asunto+"','"+consulta+"')}";
+       return Operacion.ejecutar(sql);
+    }
     
 }

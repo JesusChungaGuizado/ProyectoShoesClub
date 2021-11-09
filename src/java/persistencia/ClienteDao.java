@@ -16,4 +16,5 @@ public interface ClienteDao {
     public String registrarCliente(Cliente cli);
     public Cliente buscarCliente(String usuario);
     public String ActualizarCliente(Cliente cli);
+    public String RegistrarConsulta(String nom,String correo,String cel,String asunto,String consulta);
 }

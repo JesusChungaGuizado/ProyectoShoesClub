@@ -27,4 +27,7 @@ public interface AdminServicio {
     public String actualizarCliente(Cliente cli);
     public Cliente buscarCliente(int id);
     public String eliminarCliente(int id);
+    public List verDatos();
+    public List listarConsultas();
+    public String eliminarConsulta(int id);
 }

@@ -155,4 +155,21 @@ public class AdminServicioImp implements AdminServicio{
         }
         return msg;
     }
+
+    @Override
+    public List verDatos() {
+       return admDao.verDatos();
+    }
+     @Override
+    public List listarConsultas(){
+        return admDao.listarConsultas();
+    }
+    @Override
+    public String eliminarConsulta(int id){
+        String msg=admDao.eliminarConsulta(id);
+        if (msg==null) {
+            msg="Consulta Eliminada";
+        }
+        return msg;
+    }
 }

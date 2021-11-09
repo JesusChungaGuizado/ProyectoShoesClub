@@ -27,5 +27,8 @@ public interface AdminDao {
     public String actualizarCliente(Cliente cli);
     public Object[] buscarCliente(int id);
     public String eliminarCliente(int id);
+    public List verDatos();
+    public List listarConsultas();
+    public String eliminarConsulta(int id);
     
 }

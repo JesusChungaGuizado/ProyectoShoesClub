@@ -32,6 +32,17 @@
                     </div>
                 </div>
                <main>
+                    <div class="page-header mb-3">
+                        <div>
+                            <h1>Clientes</h1>
+                        </div>
+                        <div class="header-actions">
+                            <button id="export">
+                                <span  class="far fa-file-pdf" ></span>
+                                Export PDF
+                            </button>
+                        </div>
+                    </div>
                    <div class="botones-crud">
                        <button type="button" class="btn btn-primary mb-3" id="myBtn"><img src="img/plus.svg">Añadir Cliente</button>
                        <input class="form-control mb-3" id="myInput" type="text" placeholder="Search..">
@@ -97,7 +108,7 @@
 
                             <!-- Modal Header -->
                             <div class="modal-header">
-                                <h4 class="modal-title">Actualizar</h4>
+                                <h4 class="modal-title">Actualizar Cliente</h4>
                                 <button type="button" class="close" data-dismiss="modal">×</button>
                             </div>
 
@@ -148,9 +159,9 @@
                 </div>
             <div class="row">
 
-                <div class="col-sm-12">
-                    <table class="table table-hover">
-                        <thead>
+                <div class="col-sm-12 title-report">
+                    <table class="table table-hover table-light">
+                        <thead >
                             <tr>
                                 <th>idCliente</th>
                                 <th>Nombre</th>
@@ -159,7 +170,7 @@
                                 <th>Dirección</th>
                                 <th>Usuario</th>
                                 <th>Password</th>
-                                <th colspan="2">Operación</th>
+                                <th colspan="2" class="operation">Operación</th>
                             </tr>
                         </thead>
                         <tbody id="tabla-cliente" >

@@ -18,7 +18,7 @@ window.addEventListener("load",function(){
         slidesToShow: 1,
         slidesToScroll: 1,
         draggable: true,
-        dots: '.carousel__indicadores',
+       
         arrows: {
             prev: '.carousel__anterior',
             next: '.carousel__siguiente'

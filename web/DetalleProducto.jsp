@@ -30,7 +30,7 @@
                 <h2><%=pro.getMarca()%></h2>
                <div>
                 <p><%=pro.getNombre()%></p>
-                <span>SKU:1UCK0020020</span>
+                <span>STOCK: <%=pro.getStock()%></span>
                </div>
                
                 <div>

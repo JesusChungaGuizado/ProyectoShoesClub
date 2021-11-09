@@ -49,7 +49,7 @@
                                         <td>Fecha Pedido</td>
                                         <td>Total</td>
                                         <td>Ver Detalles</td>
-                                        <td>Cancelar</td>
+                                      
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -60,7 +60,7 @@
                                             <td> <%= ob[1] %></td>
                                             <td> S/<%= ob[2] %></td>
                                             <td> <a class="link-delete" href="PedidoControl?acc=reporte&id=<%= ob[0] %>"><i class='bx bx-download'></i>Detalle</a></td>
-                                            <td><a class="link-delete" href="#"><i class='bx bxs-trash'></i>Eliminar</a></td>
+                                            
                                         </tr>
                                     <% } %>    
                                 </tbody>

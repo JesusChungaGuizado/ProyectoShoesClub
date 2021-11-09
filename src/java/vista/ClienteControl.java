@@ -94,7 +94,15 @@ public class ClienteControl extends HttpServlet {
             se.removeAttribute("SesionCliente");
             response.sendRedirect("index.jsp");
         }
-        
+        if (acc.equalsIgnoreCase("consultar")) {
+            response.setContentType("application/json;charset=UTF-8");
+            String nombre=request.getParameter("nombre");
+            String email=request.getParameter("email");
+            String celular=request.getParameter("celular");
+            String asunto=request.getParameter("asunto");
+            String consulta=request.getParameter("consulta");
+            out.println(new Gson().toJson(cliSer.RegistrarConsulta(nombre, email, celular, asunto, consulta)));
+        }
         
     }
 
